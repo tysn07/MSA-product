@@ -71,4 +71,10 @@ public class ProductController {
         return productCacheService.getAllProducts(pageable);
     }
 
+    @GetMapping("")
+    public String test (){
+        return "OK";
+
+    }
+
 }
