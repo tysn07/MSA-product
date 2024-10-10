@@ -79,7 +79,7 @@ jobs:
       - name: docker run new container
         run: |
           source ~/.bashrc
-          docker run --rm -it -d -p 8081:8081 --name msa-product ${{ secrets.DOCKERHUB_USERNAME }}/msa-product
+          docker run --rm -it -d -p 8083:8083 --name msa-product ${{ secrets.DOCKERHUB_USERNAME }}/msa-product
 
       - name: delete old docker image
         run: docker system prune -f
