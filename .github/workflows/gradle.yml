@@ -19,6 +19,9 @@ jobs:
     permissions:
       contents: read
 
+
+
+
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -31,6 +34,12 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+
+      - name: pull redis image
+        run : docker pull redis
+
+      - name: run redis
+        run: docker run -p 6379:6379 -d redis:latest
 
       # Spring Boot 어플리케이션 Build
       - name: Build with Gradle Wrapper
