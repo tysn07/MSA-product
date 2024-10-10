@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,7 +25,7 @@ public class ProductController {
     private final ProductService productService;
     private final ProductCacheService productCacheService;
 
-   // @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @PostMapping
     public ResponseEntity<String> createAdminProduct(@RequestBody ProductRequestDto requestDto) {
         productService.createProduct(requestDto);
