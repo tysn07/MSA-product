@@ -1,7 +1,5 @@
 package group.microserviceproduct.common.security;
 
-
-
 import group.microserviceproduct.common.entity.user.User;
 import group.microserviceproduct.common.entity.user.UserRoleEnum;
 import lombok.Getter;
