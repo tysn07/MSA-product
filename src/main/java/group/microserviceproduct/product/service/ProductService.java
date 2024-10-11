@@ -59,13 +59,13 @@ public class ProductService {
         Product product = getProduct(productId);
         productRepository.delete(product);
     }
-/*
+
     public List<ProductResponse> getAllProducts(){
         List<Product> productList = productRepository.findAll();
         return productList.stream().map(ProductResponse::new).toList();
 
     }
-*/
+
 
     public void uploadProductImage(Long productId, MultipartFile file) throws IOException {
         String imageKey = UUID.randomUUID().toString();

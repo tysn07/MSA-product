@@ -4,11 +4,8 @@ package group.microserviceproduct.product.controller;
 import group.microserviceproduct.product.dto.ProductRequestDto;
 import group.microserviceproduct.product.dto.ProductResponse;
 import group.microserviceproduct.product.dto.ProductUpdateRequest;
-import group.microserviceproduct.product.service.ProductCacheService;
 import group.microserviceproduct.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +20,7 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
-    private final ProductCacheService productCacheService;
+
 
     @Secured("ROLE_ADMIN")
     @PostMapping
@@ -46,12 +43,12 @@ public class ProductController {
         return ResponseEntity.status(200)
                 .body("Product delete successfully");
     }
-/*
+
     @GetMapping("/all")
     public ResponseEntity<List<ProductResponse>> getAllProducts(){
         return ResponseEntity.status(200).body(productService.getAllProducts());
     }
-*/
+
     @PostMapping("{productId}/image")
     public void uploadProductImage(@PathVariable Long productId, @RequestParam("file") MultipartFile file) throws IOException {
         productService.uploadProductImage(productId,file);
@@ -62,14 +59,6 @@ public class ProductController {
         return productService.getProductImage(productId);
     }
 
-    @GetMapping("/all")
-    public List<ProductResponse> getAllProducts(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
-    ) {
-        Pageable pageable = PageRequest.of(page, size);
-        return productCacheService.getAllProducts(pageable);
-    }
 
     @GetMapping("")
     public String test (){
