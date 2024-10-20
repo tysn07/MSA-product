@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CORSConfig implements WebMvcConfigurer {
-
+/*
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // 모든 경로에 대해
@@ -16,4 +16,6 @@ public class CORSConfig implements WebMvcConfigurer {
             .allowCredentials(true) // 쿠키를 포함할지 여부
             .maxAge(3600); // pre-flight 요청의 캐시 시간 (초 단위)
     }
+    */
+
 }
